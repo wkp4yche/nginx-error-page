@@ -47,7 +47,7 @@ Demo [here](https://shevonkuan.github.io/nginx-error-page/)
 5. Download the generated static files from the `gh-pages` branch or the artifact of the Actions.
 6. Copy the static files to the directory eg. `/var/www/error-pages/`.
 7. Locate to the NGINX config directory, usually `/etc/nginx/` or `/usr/local/nginx/conf/`.
-8. Add a config file `error_pages.conf` in any directory, eg. `/etc/nginx/func.d/error_pages.conf`.(Ensure your nginx built with `ngx_http_sub_module` in order to replace the strings list below. If you use RHEL (including fedora, centos, etc.), you can enable the copr repository `dnf copr enable @shevon/nginx` to get the latest nginx version with the `ngx_http_sub_module` module.)
+8. Add a config file `error_pages.conf` in any directory, eg. `/etc/nginx/func.d/error_pages.conf`.(Ensure your nginx was built with `ngx_http_sub_module` in order to replace the strings listed below. If you use RHEL (including fedora, centos, etc.), you can enable the copr repository `dnf copr enable @shevon/nginx` to get the latest nginx version with the `ngx_http_sub_module` module.)
 
     ```nginx
     # error_pages.conf
