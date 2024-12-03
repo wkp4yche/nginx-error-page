@@ -28,14 +28,13 @@ jobs:
                   rm -rf ./error-pages/templates/*.html
                   cp main.html ./error-pages/templates/main.html
 
-            - name: Change directory to error-page
-              run: cd ./error-pages || exit
-
             - name: Run go command to build error pages
-              run: go run ./cmd/error-pages build --add-template=templates/main.html --index
+              run: |
+                cd error-pages  
+                go run ./cmd/error-pages build --add-template=templates/main.html --index
 
             - name: Archive
-              run: zip -r ./main ./../error-page.zip .
+              run: zip -r ./error-pages/main ./error-page.zip .
 
             - name: upload artifact
               uses: actions/upload-artifact@v4
@@ -48,8 +47,8 @@ jobs:
             - name: Ready to deploy
               run: |
                   mkdir -p ./gh-pages/main
-                  cp -r ./main ./gh-pages/main
-                  cp ./index.html ./gh-pages/index.html
+                  cp -r ./error-pages/main ./gh-pages/main
+                  cp ./error-pages/index.html ./gh-pages/index.html
             - uses: peaceiris/actions-gh-pages@v4
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
