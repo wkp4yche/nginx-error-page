@@ -2,6 +2,8 @@
 
 Yet another error-page for nginx. Clone this repo and use https://github.com/tarampampam/error-pages to generate your own error pages.
 
+This theme is modified from tarampampam/error-pages/templates/connections. Thanks to the author for the inspiration.
+
 ## Final result
 
 Demo [here](https://shevonkuan.github.io/nginx-error-page/)
