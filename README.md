@@ -3,6 +3,9 @@
 Yet another error-page for nginx. Clone this repo and use https://github.com/tarampampam/error-pages to generate your own error pages.
 
 ## Final result
+
+Demo [here](https://shevonkuan.github.io/nginx-error-page/)
+
 ![alt text](light.gif)
 ![alt text](dark.gif)
 
@@ -13,19 +16,21 @@ Yet another error-page for nginx. Clone this repo and use https://github.com/tar
 -   For ease of integration with nginx to record actual request information, nginx is used to string replacement (see the instructions in the usage section).
 
 ## Features
--  [x] Support multiple languages
--  [x] Support multiple platforms
--  [x] Support dark mode
--  [x] Support showing nginx request information
--  [x] Rich interactive effects
--  [x] Highly customizable
--  [x] No additional assets required
--  [x] Lightweight and fast
+
+-   [x] Support multiple languages
+-   [x] Support multiple platforms
+-   [x] Support dark mode
+-   [x] Support showing nginx request information
+-   [x] Rich interactive effects
+-   [x] Highly customizable
+-   [x] No additional assets required
+-   [x] Lightweight and fast
+
 ## Usage
 
 ### Use as an template for [tarampampam/error-pages](https://github.com/tarampampam/error-pages)
 
-1. Download `main.html` 
+1. Download `main.html`
 2. Clone [tarampampam/error-pages](https://github.com/tarampampam/error-pages)
 3. Add `main.html` to `./error-pages/templates/` directory.
 4. Follow the instructions in the [tarampampam/error-pages](https://github.com/tarampampam/error-pages)
@@ -42,7 +47,8 @@ Yet another error-page for nginx. Clone this repo and use https://github.com/tar
 5. Download the generated static files from the `gh-pages` branch or the artifact of the Actions.
 6. Copy the static files to the directory eg. `/var/www/error-pages/`.
 7. Locate to the NGINX config directory, usually `/etc/nginx/` or `/usr/local/nginx/conf/`.
-8. Add a config file `error_pages.conf` in any directory, eg. `/etc/nginx/func.d/error_pages.conf`.
+8. Add a config file `error_pages.conf` in any directory, eg. `/etc/nginx/func.d/error_pages.conf`.(Ensure your nginx built with `ngx_http_sub_module` in order to replace the strings list below. If you use RHEL (including fedora, centos, etc.), you can enable the copr repository `dnf copr enable @shevon/nginx` to get the latest nginx version with the `ngx_http_sub_module` module.)
+
     ```nginx
     # error_pages.conf
     error_page 400 401 403 404 405 407 408 409 410 411 412 413 416 418 429 500 502 503 504 505 @error_page;
@@ -63,7 +69,9 @@ Yet another error-page for nginx. Clone this repo and use https://github.com/tar
         sub_filter '%server%' 'nginx/$nginx_version';
     }
     ```
+
 9. Include the config file in the `server block to replace its error pages`
+
     ```nginx
     # nginx.conf
     # For more information on configuration, see:
