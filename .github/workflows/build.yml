@@ -34,13 +34,15 @@ jobs:
                 go run ./cmd/error-pages build --add-template=templates/main.html --index
 
             - name: Archive
-              run: zip -r ./error-pages/main ./error-page.zip .
+              run: |
+                mkdir ./out    
+                zip -r ./error-pages/main ./out/error-page.zip
 
             - name: upload artifact
               uses: actions/upload-artifact@v4
               with:
                   name: error-pages-static
-                  path: ./error-page.zip
+                  path: ./out
                   if-no-files-found: error
                   retention-days: 7
 
