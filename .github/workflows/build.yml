@@ -50,7 +50,7 @@ jobs:
               run: |
                   mkdir ./gh-pages
                   mkdir ./gh-pages/main
-                  cp -r ./error-pages/main ./gh-pages/main
+                  cp -r ./error-pages/main/* ./gh-pages/main/
                   cp ./error-pages/index.html ./gh-pages/index.html
             - uses: peaceiris/actions-gh-pages@v4
               with:
