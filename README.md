@@ -3,8 +3,8 @@
 Yet another error-page for nginx. Clone this repo and use https://github.com/tarampampam/error-pages to generate your own error pages.
 
 ## Final result
-<img src="light.gif" alt="alt text" style="height:300px;"/>
-<img src="dark.gif" alt="alt text" style="height:300px"/>
+![alt text](light.gif)
+![alt text](dark.gif)
 
 ## Known issues
 
@@ -33,12 +33,16 @@ Yet another error-page for nginx. Clone this repo and use https://github.com/tar
 ### Use static files for nginx
 
 1. Fork this repo.
-2. Edit the `index.html` file in the `src` directory to customize your error page.(optional)
-3. Use github Actions to generate static files.
-4. Download the generated static files from the `gh-pages` branch or the artifact of the Actions.
-5. Copy the static files to the directory eg. `/var/www/error-pages/`.
-6. Locate to the NGINX config directory, usually `/etc/nginx/` or `/usr/local/nginx/conf/`.
-7. Add a config file `error_pages.conf` in any directory, eg. `/etc/nginx/func.d/error_pages.conf`.
+2. Inintialize the submodules.
+    ```bash
+    git submodule update --init --recursive
+    ```
+3. Edit the `index.html` file in the `src` directory to customize your error page.(optional)
+4. Use github Actions to generate static files.
+5. Download the generated static files from the `gh-pages` branch or the artifact of the Actions.
+6. Copy the static files to the directory eg. `/var/www/error-pages/`.
+7. Locate to the NGINX config directory, usually `/etc/nginx/` or `/usr/local/nginx/conf/`.
+8. Add a config file `error_pages.conf` in any directory, eg. `/etc/nginx/func.d/error_pages.conf`.
     ```nginx
     # error_pages.conf
     error_page 400 401 403 404 405 407 408 409 410 411 412 413 416 418 429 500 502 503 504 505 @error_page;
@@ -59,7 +63,7 @@ Yet another error-page for nginx. Clone this repo and use https://github.com/tar
         sub_filter '%server%' 'nginx/$nginx_version';
     }
     ```
-8. Include the config file in the `server block to replace its error pages`
+9. Include the config file in the `server block to replace its error pages`
     ```nginx
     # nginx.conf
     # For more information on configuration, see:
