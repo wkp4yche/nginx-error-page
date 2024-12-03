@@ -29,7 +29,7 @@ jobs:
                   cp main.html ./error-pages/templates/main.html
 
             - name: Change directory to error-page
-              run: cd ./error-page || exit
+              run: cd ./error-pages || exit
 
             - name: Run go command to build error pages
               run: go run ./cmd/error-pages build --add-template=templates/main.html --index
